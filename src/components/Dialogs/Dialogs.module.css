@@ -1,0 +1,16 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+.usersItems {
+    padding: 15px 15px;
+}
+.item {
+    padding-bottom: 10px;
+}
+.chats {
+    padding: 15px 15px;
+}
+.chat {
+    padding-bottom: 10px;
+}
