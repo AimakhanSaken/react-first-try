@@ -1,36 +1,35 @@
-import { NavLink } from "react-router-dom";
+import Message from "./Message/Message";
+import React from "react";
 import classes from "./Dialogs.module.css";
-
-const Users = (props) => {
-  return (
-    <div className={classes.item}>
-      <NavLink to={"/Dialogs/" + props.id}>{props.name}</NavLink>
-    </div>
-  );
-};
-
-const Message = (props) => {
-    return (
-        <div className={classes.chat}>{props.message}</div>
-    )
-}
+import Users from "./DialogItem/DialogsItem";
 
 const Dialogs = (props) => {
+  let dialogsElements = props.state.dialogs.map((d) => (
+    <Users name={d.name} id={d.id} />
+  ));
+  let messagesElements = props.state.messages.map((m) => (
+    <Message message={m.message} />
+  ));
+
+  let newMessageElement = React.createRef();
+
+  let addMessage = () => {
+    let text = newMessageElement.current.value;
+    alert(text);
+  };
+
   return (
-    <div className={classes.dialogs}>
-      <div className={classes.usersItems}>
-        <Users  name='John' id='1'/>
-        <Users  name='Sam' id='2'/>
-        <Users  name='Leo' id='3'/>
-        <Users  name='Nick' id='4'/>
-        <Users  name='Max' id='5'/>
-        <Users  name='Mona' id='6'/>
-        <Users  name='Tomy' id='7'/>
+    <div>
+      <div className={classes.dialogs}>
+        <div className={classes.usersItems}>{dialogsElements}</div>
+        <div className={classes.chats}>{messagesElements}</div>
       </div>
-      <div className={classes.chats}>
-        <Message message='Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore repudiandae iste eligendi odio'/>
-        <Message message='At, mollitia dignissimos harum iure autem sunt enim dicta facere dolor.'/>
-        <Message message='Maiores et ullam accusamus reiciendis consectetur!'/>
+      <div className={classes.sendText}>
+      <textarea
+          className={classes.messageTextarea}
+          ref={newMessageElement}
+        ></textarea>
+        <button onClick={addMessage}>Send</button>
       </div>
     </div>
   );

@@ -14,4 +14,7 @@
   grid-area: c;
   background-color: rgb(247, 246, 231);
 }
-
+.app-wrapper-friends {
+  grid-area: n;
+  margin-top: 212px;
+}

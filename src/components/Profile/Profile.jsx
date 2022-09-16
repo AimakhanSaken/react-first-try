@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./Profile.module.css";
 import MyPosts from "./MyPosts/MyPosts";
 
-const Profile = function () {
+const Profile = function (props) {
   return (
     <div>
       <div className={classes.backCont}>
@@ -11,7 +11,12 @@ const Profile = function () {
       <div className={classes.logo}>
         <img src="https://images.ctfassets.net/hrltx12pl8hq/qGOnNvgfJIe2MytFdIcTQ/429dd7e2cb176f93bf9b21a8f89edc77/Images.jpg" />
       </div>
-      <MyPosts />
+      <MyPosts
+        postData={props.profilePage.postData}
+        newPostText={props.profilePage.newPostText}
+        updateNewPostText={props.updateNewPostText}
+        addPost={props.addPost}
+      />
     </div>
   );
 };
